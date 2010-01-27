@@ -1,4 +1,5 @@
 $LOAD_PATH.unshift "#{File.dirname(__FILE__)}/../lib"
+require 'rubygems'
 require 'prawn'
 require 'prawn/format'
 require 'prawn/format/version'
@@ -29,7 +30,7 @@ end
 
 def process_substitutions(content)
   content.
-    gsub(/%FORMAT:VERSION%/, Prawn::Format::Version::STRING).
+    gsub(/%FORMAT:VERSION%/, Prawn::Format::VERSION).
     gsub(/%NOW%/, Time.now.utc.strftime("%e %B %Y at %H:%M UTC")).
     gsub(/%PDF\{(.*?)\}HTML\{(.*?)\}END%/, '\\1')
 end

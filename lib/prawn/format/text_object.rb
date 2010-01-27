@@ -25,6 +25,7 @@ module Prawn
 
       def open
         @content = "BT\n"
+        update_colors
         self
       end
 
