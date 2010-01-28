@@ -21,11 +21,11 @@ module Prawn
       def initialize
         @content = nil
         @last_x = @last_y = 0
+        @color_space = {}
       end
 
       def open
         @content = "BT\n"
-        update_colors
         self
       end
 

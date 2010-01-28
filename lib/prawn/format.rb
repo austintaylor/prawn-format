@@ -16,11 +16,11 @@ module Prawn
     end
 
     # Overloaded version of #height_of.
-    def height_of(string, line_width, size=font_size, options={}) #:nodoc:
+    def height_of(string, options={}) #:nodoc:
       if unformatted?(string, options)
-        super(string, line_width, size)
+        super(string, options)
       else
-        formatted_height(string, line_width, size, options)
+        formatted_height(string, options)
       end
     end
 
@@ -199,9 +199,9 @@ module Prawn
         end
       end
 
-      def formatted_height(string, line_width, size=font_size, options={})
-        helper = layout(string, options.merge(:size => size))
-        lines = helper.word_wrap(line_width)
+      def formatted_height(string, options={})
+        helper = layout(string, options)
+        lines = helper.word_wrap(options[:width])
         return lines.inject(0) { |s, line| s + line.height }
       end
 

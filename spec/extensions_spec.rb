@@ -11,7 +11,7 @@ describe "when extending the prawn-core methods" do
 
   it "should retain proper functioning of height_of()" do
     assert_equal @pdf.font.height*3, 
-       @pdf.height_of("hi<br/><br/>there", @pdf.bounds.width)
+       @pdf.height_of("hi<br/><br/>there", :width => @pdf.bounds.width)
   end
 
 end
