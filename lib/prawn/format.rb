@@ -14,6 +14,16 @@ module Prawn
         format(text, options)
       end
     end
+    
+    # Overloaded version of #text_at.
+    def text_at(text, options) #:nodoc:
+      if unformatted?(text, options)
+        super
+      else
+        x, y = options[:at]
+        format_positioned_text(text, x, y, options)
+      end
+    end
 
     # Overloaded version of #height_of.
     def height_of(string, options={}) #:nodoc:
